@@ -1,0 +1,26 @@
+<!-- Pokémons search -->
+<div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
+  <md-content class="md-padding">
+    <form ng-submit="$event.preventDefault()">
+      <md-autocomplete
+          md-no-cache="ctrl.noCache"
+          md-selected-item="ctrl.selectedItem"
+          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+          md-search-text="ctrl.searchText"
+          md-selected-item-change="ctrl.selectedItemChange(item)"
+          md-items="item in ctrl.querySearch(ctrl.searchText)"
+          md-item-text="item.pokemon"
+          md-min-length="0"
+          placeholder="Filtro de Pokémons">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.pokemon}}</span>
+        </md-item-template>
+        <md-not-found>
+          No coinciden pokémons con el nombre "{{ctrl.searchText}}".
+        </md-not-found>
+      </md-autocomplete>
+    </form>
+  </md-content>
+</div>
+
+<!-- Pokémons list -->
