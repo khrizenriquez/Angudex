@@ -35,7 +35,9 @@
         md-row-height-sm="1:1" 
         md-row-height-gt-md="1:1" 
         md-row-height="1:1">
-          <md-grid-tile class="grid-pokemon-list pointer" ng-repeat="p in pokemons.fillPokemonCards() | filter:q as results"
+            <md-grid-tile class="grid-pokemon-list pointer" 
+                ng-repeat="p in pokemons.fillPokemonCards() | filter:q as results"
+                ng-click="pokemons.redirectToPokemonInfo(p.pokedex_national)"
                   md-rowspan="1"
                   md-colspan="1"
                   md-colspan-xs="1"
@@ -43,13 +45,13 @@
                   md-colspan-sm="1"
                   md-rowspan-sm="1"
                   style="background-image: url('/images/pokemons/pokemon-svg/dream-world/{{p.pokedex_national}}.svg'), linear-gradient(to bottom, #ADB2B6, #ABAEB3);">
-          <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.67);height:auto;padding:10px 0">
-            <h3>
-              <span># {{p.pokedex_national}}</span>
-            </h3>
-            <h3 style="font-size:1.2em;color:white" class="capital">{{p.pokemon}}</h3>
-          </md-grid-tile-footer>
-        </md-grid-tile>
+            <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.67);height:auto;padding:10px 0">
+              <h3>
+                <span># {{p.pokedex_national}}</span>
+              </h3>
+              <h3 style="font-size:1.2em;color:white" class="capital">{{p.pokemon}}</h3>
+            </md-grid-tile-footer>
+          </md-grid-tile>
 
       </md-grid-list>
     </md-list>

@@ -1,6 +1,6 @@
 'use strict'
 
-let SearchCtrl = function ($timeout, $q, $log, $http) {
+let SearchCtrl = function ($timeout, $q, $log, $http, $scope, $location) {
   let self            = this
   self.simulateQuery  = false
   self.isDisabled     = false
@@ -8,6 +8,9 @@ let SearchCtrl = function ($timeout, $q, $log, $http) {
   self.pokemons         = loadAll().then(function(data) {
     return data
   })
+  self.redirectToPokemonInfo = function (pokemonId) {
+    $location.path(`/pokemons/${pokemonId}`)
+  }
   self.fillPokemonCards   = function () {
     var p = self.pokemons,
                   deferred
