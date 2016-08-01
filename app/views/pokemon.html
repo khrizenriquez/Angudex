@@ -1,34 +1,62 @@
 <div>
   <md-grid-list
-        md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="3"
-        md-row-height-gt-md="3:2" md-row-height="3:2"
+        md-cols-xs="1" md-cols-sm="3" md-cols-md="3" md-cols-gt-md="3"
+        md-row-height-gt-md="1:1" md-row-height="1:1"
         md-gutter="12px" md-gutter-gt-sm="8px" >
     <md-grid-tile
+        class="grid-container"
         md-colspan-gt-md="1"
         md-colspan-gt-sm="1"
+        md-colspan-sm="1"
         md-rowspan-gt-sm="1"
         md-rowspan="1" 
         md-colspan="1" 
-        md-colspan-sm="1" 
         md-colspan-xs="1">
       <div>
         <img src="/images/pokemons/pokemon-svg/dream-world/1.svg" alt="" />
+      </div>
+      <div>
+        <h3>tipos</h3>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non minus ullam consectetur sapiente doloremque quam magni, ad reprehenderit iusto mollitia nihil iste recusandae, neque magnam amet eligendi. Nam, voluptatibus, vel!</div>
+        
+        <md-button class="md-raised">
+          Reproducir <md-icon md-svg-src="/bower_components/material-design-icons/action/svg/production/ic_settings_voice_24px.svg"></md-icon>
+        </md-button>
       </div>
       <md-grid-tile-footer>
         <h3>#1: (3r x 2c)</h3>
       </md-grid-tile-footer>
     </md-grid-tile>
-    <md-grid-tile class="gray"
+    <md-grid-tile class="grid-container"
         md-colspan-gt-md="2"
-        md-colspan-gt-sm="1"
+        md-colspan-gt-sm="2"
+        md-colspan-sm="2"
         md-rowspan-gt-sm="1"
         md-rowspan="1" 
         md-colspan="1" 
-        md-colspan-sm="1" 
         md-colspan-xs="1">
-        <div>
+        <div class="progress-pokemon-info">
+          <h4 class="md-title">HP</h4>
           <md-progress-linear md-mode="determinate" value="100"></md-progress-linear>
-          <h4 class="md-title">Indeterminate</h4>
+        </div>
+        <div class="progress-pokemon-info">
+          <h4 class="md-title">Ataque</h4>
+          <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
+        </div>
+        <div class="progress-pokemon-info">
+          <h4 class="md-title">Defensa</h4>
+          <md-progress-linear md-mode="determinate" value="50"></md-progress-linear>
+        </div>
+        <div class="progress-pokemon-info">
+          <h4 class="md-title">Ataque especial</h4>
+          <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
+        </div>
+        <div class="progress-pokemon-info">
+          <h4 class="md-title">Defensa especial</h4>
+          <md-progress-linear md-mode="determinate" value="30"></md-progress-linear>
+        </div><div class="progress-pokemon-info">
+          <h4 class="md-title">Velocidad</h4>
+          <md-progress-linear md-mode="determinate" value="95"></md-progress-linear>
         </div>
       <md-grid-tile-footer>
         <h3>#1: (3r x 2c)</h3>
