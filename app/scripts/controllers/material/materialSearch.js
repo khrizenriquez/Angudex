@@ -1,40 +1,44 @@
 'use strict'
-//function SearchCtrl ($q, $log) {
 
-//}
-anguDex.controller('DemoCtrl', function ($timeout, $q, $log, $http) {
-  var self = this;
-  self.simulateQuery = false;
-  self.isDisabled    = false;
+let SearchCtrl = function ($timeout, $q, $log, $http) {
+  let self            = this
+  self.simulateQuery  = false
+  self.isDisabled     = false
   // list of `state` value/display objects
-  //self.states        = loadAll();
-  self.states        = loadAll().then(function(data) { 
-    $log.info(data)
-    return data;
-  });
-  self.querySearch   = querySearch;
-  self.selectedItemChange = selectedItemChange;
-  self.searchTextChange   = searchTextChange;
-  self.newState = newState;
-  function newState(state) {
-    alert("Sorry! You'll need to create a Constituion for " + state + " first!");
+  self.pokemons         = loadAll().then(function(data) {
+    return data
+  })
+  self.fillPokemonCards   = function () {
+    var p = self.pokemons,
+                  deferred
+    if (self.simulateQuery) {
+      deferred = $q.defer()
+      deferred.resolve(p)
+      $log.info(deferred.promise)
+      return deferred.promise
+    } else {
+      return p.$$state.value
+    }
   }
+  self.querySearch        = querySearch
+  self.selectedItemChange = selectedItemChange
+  self.searchTextChange   = searchTextChange
   // ******************************
   // Internal methods
   // ******************************
   /**
-   * Search for states... use $timeout to simulate
+   * Search for pokemons... use $timeout to simulate
    * remote dataservice call.
    */
   function querySearch (query) {
-    var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-        deferred;
+    var results = self.pokemons,
+                  deferred
     if (self.simulateQuery) {
-      deferred = $q.defer();
-      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-      return deferred.promise;
+      deferred = $q.defer()
+      deferred.resolve(results)
+      return deferred.promise
     } else {
-      return results;
+      return results
     }
   }
   function searchTextChange(text) {
@@ -44,7 +48,7 @@ anguDex.controller('DemoCtrl', function ($timeout, $q, $log, $http) {
     $log.info('Item changed to ' + JSON.stringify(item));
   }
   /**
-   * Build `states` list of key/value pairs
+   * Build `pokemons` list of key/value pairs
    */
   function loadAll() {
     let getAll = '?limit=151'
@@ -53,7 +57,6 @@ anguDex.controller('DemoCtrl', function ($timeout, $q, $log, $http) {
     })
     .then(function (result) {
       return result.data.results.map(function (pokemon) {
-        //$log.info(pokemon)
         let pokeNumber = pokemon.url.split('/')
         return {
           pokemon:          pokemon.name,
@@ -63,18 +66,6 @@ anguDex.controller('DemoCtrl', function ($timeout, $q, $log, $http) {
     }, function (result) {
       $log.info("Error: No data returned");
     });
-    // var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-    //         Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-    //         Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-    //         Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-    //         North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-    //         South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-    //         Wisconsin, Wyoming';
-    // return allStates.split(/, +/g).map( function (state) {
-    //   return {
-    //     value: state.toLowerCase(),
-    //     display: state
-    //   };
-    // });
   }
-})
+}
+anguDex.controller('SearchCtrl', SearchCtrl)

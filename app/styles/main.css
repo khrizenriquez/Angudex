@@ -9,6 +9,7 @@ body {
   padding: 0;
 }
 
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -57,6 +58,27 @@ body {
 }
 .marketing p + h4 {
   margin-top: 28px;
+}
+
+.grid-pokemon-list {
+  -ms-background-position-x: center;
+  -ms-background-position-y: bottom;
+  background-position: center center;
+  background-size: cover;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.capital::first-letter {
+  text-transform: uppercase !important;
 }
 
 /* Responsive: Portrait tablets and up */
