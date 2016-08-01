@@ -1,60 +1,61 @@
-<h1>Son solo {{ pokemons.fillPokemonCards().length }}</h1>
+<div ng-controller="SearchCtrl as pokemons">
+  <h1 class="text-center">Son solo {{ pokemons.fillPokemonCards().length }}</h1>
 
-<!-- Pokémons search -->
-<div ng-controller="SearchCtrl as pokemons" layout="column" ng-cloak>
-  <md-content class="md-padding">
-    <form ng-submit="$event.preventDefault()">
-      <md-autocomplete
-          md-no-cache="pokemons.noCache"
-          md-selected-item="pokemons.selectedItem"
-          md-search-text-change="pokemons.searchTextChange(pokemons.searchText)"
-          md-search-text="pokemons.searchText"
-          md-selected-item-change="pokemons.selectedItemChange(item)"
-          md-items="item in pokemons.querySearch(pokemons.searchText)"
-          md-item-text="item.pokemon"
-          md-min-length="0"
-          placeholder="Filtro de Pokémons">
-        <md-item-template>
-          <span md-highlight-text="pokemons.searchText" md-highlight-flags="^i">{{item.pokemon}}</span>
-        </md-item-template>
-        <md-not-found>
-          No coinciden pokémons con el nombre "{{pokemons.searchText}}".
-        </md-not-found>
-      </md-autocomplete>
-    </form>
-  </md-content>
+  <!-- Pokémons search -->
+  <div layout="column" ng-cloak>
+    <md-content class="md-padding">
+      <form ng-submit="$event.preventDefault()">
+        <md-autocomplete
+            md-no-cache="pokemons.noCache"
+            md-selected-item="pokemons.selectedItem"
+            md-search-text-change="pokemons.searchTextChange(pokemons.searchText)"
+            md-search-text="pokemons.searchText"
+            md-selected-item-change="pokemons.selectedItemChange(item)"
+            md-items="item in pokemons.querySearch(pokemons.searchText)"
+            md-item-text="item.pokemon"
+            md-min-length="0"
+            placeholder="Filtro de Pokémons">
+          <md-item-template>
+            <span md-highlight-text="pokemons.searchText" md-highlight-flags="^i">{{item.pokemon}}</span>
+          </md-item-template>
+          <md-not-found>
+            No coinciden pokémons con el nombre "{{pokemons.searchText}}".
+          </md-not-found>
+        </md-autocomplete>
+      </form>
+    </md-content>
 
-  <!-- Pokémons list -->
-  <md-content class="md-padding autocomplete" layout="column">
-    <md-list class="fixedRows">
-      <md-subheader class="md-no-sticky">Pokémons</md-subheader>
+    <!-- Pokémons list -->
+    <md-content class="md-padding autocomplete" layout="column">
+      <md-list class="fixedRows">
+        <md-subheader class="md-no-sticky">Pokémons</md-subheader>
 
-        <md-grid-list 
-        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="4" 
-        md-row-height-xs="1:1" 
-        md-row-height-sm="1:1" 
-        md-row-height-gt-md="1:1" 
-        md-row-height="1:1">
-            <md-grid-tile class="grid-pokemon-list pointer" 
-                ng-repeat="p in pokemons.fillPokemonCards() | filter:q as results"
-                ng-click="pokemons.redirectToPokemonInfo(p.pokedex_national)"
-                  md-rowspan="1"
-                  md-colspan="1"
-                  md-colspan-xs="1"
-                  md-rowspan-xs="1"
-                  md-colspan-sm="1"
-                  md-rowspan-sm="1"
-                  style="background-image: url('/images/pokemons/pokemon-svg/dream-world/{{p.pokedex_national}}.svg'), linear-gradient(to bottom, #ADB2B6, #ABAEB3);">
-            <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.67);height:auto;padding:10px 0">
-              <h3>
-                <span># {{p.pokedex_national}}</span>
-              </h3>
-              <h3 style="font-size:1.2em;color:white" class="capital">{{p.pokemon}}</h3>
-            </md-grid-tile-footer>
-          </md-grid-tile>
+          <md-grid-list 
+          md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="4" 
+          md-row-height-xs="1:1" 
+          md-row-height-sm="1:1" 
+          md-row-height-gt-md="1:1" 
+          md-row-height="1:1">
+              <md-grid-tile class="grid-pokemon-list pointer" 
+                  ng-repeat="p in pokemons.fillPokemonCards() | filter:q as results"
+                  ng-click="pokemons.redirectToPokemonInfo(p.pokedex_national)"
+                    md-rowspan="1"
+                    md-colspan="1"
+                    md-colspan-xs="1"
+                    md-rowspan-xs="1"
+                    md-colspan-sm="1"
+                    md-rowspan-sm="1"
+                    style="background-image: url('/images/pokemons/pokemon-svg/dream-world/{{p.pokedex_national}}.svg'), linear-gradient(to bottom, #ADB2B6, #ABAEB3);">
+              <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.67);height:auto;padding:10px 0">
+                <h3>
+                  <span># {{p.pokedex_national}}</span>
+                </h3>
+                <h3 style="font-size:1.2em;color:white" class="capital">{{p.pokemon}}</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
 
-      </md-grid-list>
-    </md-list>
-  </md-content>
+        </md-grid-list>
+      </md-list>
+    </md-content>
+  </div>
 </div>
-
