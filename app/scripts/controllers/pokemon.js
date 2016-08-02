@@ -18,6 +18,11 @@ anguDex.controller('PokemonCtrl', function ($log, $http, $location, $scope) {
     })
     .then(function (result) {
       let pokemonInfo = result.data
+      //	Image path
+      pokemonInfo.image = `/images/pokemons/pokemon-svg/dream-world/${pokemonInfo.id}.svg`
+      //	Sound path
+      pokemonInfo.sound = `/sounds/pokemon-cries/cries/${pokemonInfo.id}.ogg`
+      
       $scope.pokemon = pokemonInfo
       return {
         pokemonInfo

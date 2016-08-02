@@ -12,8 +12,9 @@
         md-rowspan="1" 
         md-colspan="1" 
         md-colspan-xs="1">
+      <h2 class="capital">{{ pokemon.name }}</h2>
       <div>
-        <img src="/images/pokemons/pokemon-svg/dream-world/1.svg" alt="" />
+        <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" />
       </div>
       <div>
         <h3>tipos</h3>
@@ -23,9 +24,6 @@
           Reproducir <md-icon md-svg-src="/bower_components/material-design-icons/action/svg/production/ic_settings_voice_24px.svg"></md-icon>
         </md-button>
       </div>
-      <md-grid-tile-footer>
-        <h3>#1: (3r x 2c)</h3>
-      </md-grid-tile-footer>
     </md-grid-tile>
     <md-grid-tile class="grid-container"
         md-colspan-gt-md="2"
@@ -58,9 +56,8 @@
           <h4 class="md-title">Velocidad</h4>
           <md-progress-linear md-mode="determinate" value="95"></md-progress-linear>
         </div>
-      <md-grid-tile-footer>
-        <h3>#1: (3r x 2c)</h3>
-      </md-grid-tile-footer>
     </md-grid-tile>
   </md-grid-list>
 </div>
+
+{{ pokemon }}
