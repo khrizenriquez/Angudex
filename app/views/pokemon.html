@@ -17,8 +17,10 @@
         <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" />
       </div>
       <div>
-        <h3>tipos</h3>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non minus ullam consectetur sapiente doloremque quam magni, ad reprehenderit iusto mollitia nihil iste recusandae, neque magnam amet eligendi. Nam, voluptatibus, vel!</div>
+        <h3>Tipo</h3>
+        <div ng-repeat="t in pokemon.types">
+          <span>{{ t.type.name }}</span>
+        </div>
         
         <md-button class="md-raised">
           Reproducir <md-icon md-svg-src="/bower_components/material-design-icons/action/svg/production/ic_settings_voice_24px.svg"></md-icon>
@@ -33,31 +35,14 @@
         md-rowspan="1" 
         md-colspan="1" 
         md-colspan-xs="1">
-        <div class="progress-pokemon-info">
-          <h4 class="md-title">HP</h4>
-          <md-progress-linear md-mode="determinate" value="100"></md-progress-linear>
-        </div>
-        <div class="progress-pokemon-info">
-          <h4 class="md-title">Ataque</h4>
-          <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
-        </div>
-        <div class="progress-pokemon-info">
-          <h4 class="md-title">Defensa</h4>
-          <md-progress-linear md-mode="determinate" value="50"></md-progress-linear>
-        </div>
-        <div class="progress-pokemon-info">
-          <h4 class="md-title">Ataque especial</h4>
-          <md-progress-linear md-mode="determinate" value="90"></md-progress-linear>
-        </div>
-        <div class="progress-pokemon-info">
-          <h4 class="md-title">Defensa especial</h4>
-          <md-progress-linear md-mode="determinate" value="30"></md-progress-linear>
-        </div><div class="progress-pokemon-info">
-          <h4 class="md-title">Velocidad</h4>
-          <md-progress-linear md-mode="determinate" value="95"></md-progress-linear>
+        <div ng-repeat="stats in pokemon.pokemon_stats">
+          <div class="progress-pokemon-info">
+            <h4 class="md-title">{{ stats.readable_name }}</h4>
+            <md-progress-linear md-mode="determinate" value="{{ stats.stat }}"></md-progress-linear>
+          </div>
         </div>
     </md-grid-tile>
   </md-grid-list>
 </div>
 
-{{ pokemon }}
+<!-- {{ pokemon }} -->

@@ -22,6 +22,35 @@ anguDex.controller('PokemonCtrl', function ($log, $http, $location, $scope) {
       pokemonInfo.image = `/images/pokemons/pokemon-svg/dream-world/${pokemonInfo.id}.svg`
       //	Sound path
       pokemonInfo.sound = `/sounds/pokemon-cries/cries/${pokemonInfo.id}.ogg`
+
+      //	Pokémon stats
+      let pokemonStats 	= []
+      const MAXBASE 	= 200
+      let secuense = ['hp', 
+  					'attack', 
+  					'defense', 
+  					'special-attack', 
+  					'special-defense', 
+  					'speed']
+  	  let readableSequence = ['HP', 
+  	  						'Ataque', 
+  	  						'Defensa', 
+  	  						'Ataque especial', 
+  	  						'Defensa especial', 
+  	  						'Velocidad']
+  	  secuense.some(function (element, index, arr) {
+  	  	pokemonInfo.stats.some(function (ele, ind, ar) {
+	      	if (element == ele.stat.name) {
+	      		pokemonStats.push({
+		      		'name': 		ele.stat.name, 
+		      		'stat': 		(100 * parseInt(ele.base_stat)) / MAXBASE, 
+		      		'readable_name': readableSequence[index]
+		      	})
+		      	return false
+	      	}
+	      })
+  	  })
+      pokemonInfo.pokemon_stats = pokemonStats
       
       $scope.pokemon = pokemonInfo
       return {
