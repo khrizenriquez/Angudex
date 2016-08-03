@@ -18,9 +18,17 @@
       </div>
       <div>
         <h3>Tipo</h3>
-        <div ng-repeat="t in pokemonDetail.types">
-          <span>{{ t.type.name }}</span>
-        </div>
+          <md-chips>
+            <md-chip class="red" ng-repeat="t in pokemonDetail.types"></md-chip>
+          </md-chips>
+        <!-- <div ng-repeat="t in pokemonDetail.types"> -->
+          <md-chips ng-model="pokemonDetail.types" readonly="true">
+            <md-chip-template>
+              {{ $chip.type.name }}
+            </md-chip-template>
+          </md-chips>
+          <!-- <md-chips ng-model="t.type.name" readonly="true"></md-chips> -->
+        <!-- </div> -->
         
         <md-button class="md-raised" ng-click="pokemonDetail.playScreem(pokemonDetail.id)">
           Reproducir <md-icon md-svg-src="/bower_components/material-design-icons/action/svg/production/ic_settings_voice_24px.svg"></md-icon>
