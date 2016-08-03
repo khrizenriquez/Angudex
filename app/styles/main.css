@@ -81,6 +81,10 @@ body {
   text-transform: uppercase !important;
 }
 
+.width-100 {
+  width: 100%
+}
+
 .grid-container figure {
   display: block !important;
 }

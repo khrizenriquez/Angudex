@@ -12,17 +12,17 @@
         md-rowspan="1" 
         md-colspan="1" 
         md-colspan-xs="1">
-      <h2 class="capital">{{ pokemon.name }}</h2>
+      <h2 class="capital">{{ pokemonDetail.name }}</h2>
       <div>
-        <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" />
+        <img class="width-100" src="{{ pokemonDetail.image }}" alt="{{ pokemonDetail.name }}" />
       </div>
       <div>
         <h3>Tipo</h3>
-        <div ng-repeat="t in pokemon.types">
+        <div ng-repeat="t in pokemonDetail.types">
           <span>{{ t.type.name }}</span>
         </div>
         
-        <md-button class="md-raised">
+        <md-button class="md-raised" ng-click="pokemonDetail.playScreem(pokemonDetail.id)">
           Reproducir <md-icon md-svg-src="/bower_components/material-design-icons/action/svg/production/ic_settings_voice_24px.svg"></md-icon>
         </md-button>
       </div>
@@ -35,7 +35,7 @@
         md-rowspan="1" 
         md-colspan="1" 
         md-colspan-xs="1">
-        <div ng-repeat="stats in pokemon.pokemon_stats">
+        <div ng-repeat="stats in pokemonDetail.pokemon_stats">
           <div class="progress-pokemon-info">
             <h4 class="md-title">{{ stats.readable_name }}</h4>
             <md-progress-linear md-mode="determinate" value="{{ stats.stat }}"></md-progress-linear>
@@ -44,5 +44,3 @@
     </md-grid-tile>
   </md-grid-list>
 </div>
-
-<!-- {{ pokemon }} -->
