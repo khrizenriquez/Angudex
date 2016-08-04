@@ -5,7 +5,11 @@
   <div layout="column" ng-cloak>
     <md-content class="md-padding">
       <form ng-submit="$event.preventDefault()">
-        <md-autocomplete
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Filtro de Pokémons</label>
+          <input ng-model="q">
+        </md-input-container>
+        <!-- <md-autocomplete
             md-no-cache="pokemons.noCache"
             md-selected-item="pokemons.selectedItem"
             md-search-text-change="pokemons.searchTextChange(pokemons.searchText)"
@@ -21,7 +25,7 @@
           <md-not-found>
             No coinciden pokémons con el nombre "{{pokemons.searchText}}".
           </md-not-found>
-        </md-autocomplete>
+        </md-autocomplete> -->
       </form>
     </md-content>
 

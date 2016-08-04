@@ -24,33 +24,9 @@ let SearchCtrl = function ($timeout, $q, $log, $http, $scope, $location) {
             p.$$state.value : 
             p;
   }
-  self.querySearch        = querySearch
-  self.selectedItemChange = selectedItemChange
-  self.searchTextChange   = searchTextChange
   // ******************************
   // Internal methods
   // ******************************
-  /**
-   * Search for pokemons... use $timeout to simulate
-   * remote dataservice call.
-   */
-  function querySearch (query) {
-    var results = self.pokemons,
-                  deferred
-    if (self.simulateQuery) {
-      deferred = $q.defer()
-      deferred.resolve(results)
-      return deferred.promise
-    } else {
-      return results
-    }
-  }
-  function searchTextChange(text) {
-    $log.info('Text changed to ' + text);
-  }
-  function selectedItemChange(item) {
-    $log.info('Item changed to ' + JSON.stringify(item));
-  }
   /**
    * Build `pokemons` list of key/value pairs
    */
