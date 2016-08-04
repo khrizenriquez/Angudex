@@ -12,25 +12,18 @@
         md-rowspan="1" 
         md-colspan="1" 
         md-colspan-xs="1">
-      <h2 class="capital">{{ pokemonDetail.name }}</h2>
+      <h2>{{ pokemonDetail.name }}</h2>
       <div>
         <img class="width-100" src="{{ pokemonDetail.image }}" alt="{{ pokemonDetail.name }}" />
       </div>
       <div>
-        <h3>Tipo</h3>
-          <md-chips>
-            <md-chip class="red" ng-repeat="t in pokemonDetail.types"></md-chip>
-          </md-chips>
-        <!-- <div ng-repeat="t in pokemonDetail.types"> -->
-          <md-chips ng-model="pokemonDetail.types" readonly="true">
-            <md-chip-template>
-              {{ $chip.type.name }}
-            </md-chip-template>
-          </md-chips>
-          <!-- <md-chips ng-model="t.type.name" readonly="true"></md-chips> -->
-        <!-- </div> -->
+        <md-chips ng-model="pokemonDetail.types" readonly="true">
+          <md-chip-template>
+            {{ $chip.type.name }}
+          </md-chip-template>
+        </md-chips>
         
-        <md-button class="md-raised" ng-click="pokemonDetail.playScreem(pokemonDetail.id)">
+        <md-button class="md-raised" ng-click="pokemon.playScreem(pokemonDetail.id)">
           Reproducir <md-icon md-svg-src="/bower_components/material-design-icons/action/svg/production/ic_settings_voice_24px.svg"></md-icon>
         </md-button>
       </div>

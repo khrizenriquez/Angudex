@@ -11,7 +11,7 @@ var audio
 anguDex.controller('PokemonCtrl', function ($log, $http, $location, $scope) {
 	this.playScreem = function (pokemonId) {
 		$log.info(pokemonId)
-		let sound = `/sounds/pokemon-cries/cries/150.ogg`
+		let sound = `/sounds/pokemon-cries/cries/${pokemonId}.ogg`
 
 		let audio = new Audio(sound)
 		audio.play()
